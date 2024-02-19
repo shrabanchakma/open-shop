@@ -36,8 +36,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
-      <div className="navbar-start">
+    <div className="navbar justify-between bg-base-100">
+      <div className="w-1/2 ">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -62,15 +62,17 @@ const Navbar = () => {
             {navOptions}
           </ul>
         </div>
-        <div className="flex items-center">
-          <a className="btn btn-ghost text-3xl mr-32 font-medium">EasyMart</a>
-          <ul className="flex gap-10 items-center font-medium">{navOptions}</ul>
+        <div className="flex items-center gap-2 md:gap-4">
+          <a className="btn btn-ghost hidden sm:block  md:text-3xl md:font-medium">
+            EasyMart
+          </a>
+          <ul className="hidden lg:flex gap-10 items-center font-medium">
+            {navOptions}
+          </ul>
         </div>
       </div>
-      {/* <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navOptions}</ul>
-      </div> */}
-      <div className="navbar-end">
+
+      <div className="w-1/2 flex justify-end">
         <a className="btn">Button</a>
       </div>
     </div>

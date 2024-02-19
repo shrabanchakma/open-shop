@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FcPrevious, FcNext } from "react-icons/fc";
+import "./Slider.css";
 const Slider = ({ page, limit }) => {
   const [images, setImages] = useState([]);
   const [currentImg, setCurrentImg] = useState(0);
@@ -37,24 +38,19 @@ const Slider = ({ page, limit }) => {
 
   if (loading)
     return (
-      <div className="flex justify-center items-center h-[calc(100vh-64px)]">
+      <div className="banner-size">
         <span className="loading loading-ball loading-lg"></span>
       </div>
     );
 
-  if (errorMsg)
-    return (
-      <div className="flex justify-center items-center h-[calc(100vh-64px)]">
-        {errorMsg}
-      </div>
-    );
+  if (errorMsg) return <div className="banner-size">{errorMsg}</div>;
 
   return (
     <div className="relative bg-green-500">
       <div className="h-[calc(100vh-64px)] bg-yellow-500 flex justify-center  w-full relative">
         <button
           onClick={() => goLeft(currentImg)}
-          className="text-4xl absolute bottom-0 right-[47px] bg-base-200 rounded-sm py-[.4rem] px-[.3rem]"
+          className="sliding-button right-[47px] "
         >
           <FcPrevious />
         </button>
@@ -74,21 +70,20 @@ const Slider = ({ page, limit }) => {
         )}
         <button
           onClick={() => goRight(currentImg)}
-          className="text-4xl absolute bottom-0 right-0 bg-base-200 rounded-sm py-[.4rem] px-[.3rem]"
+          className="sliding-button right-0 "
         >
           <FcNext />
         </button>
       </div>
-      <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
+      <span className="absolute bottom-0 left-1/2 flex gap-1 transform -translate-x-1/2">
         {images && images.length ? (
           images.map((_, idx) => (
             <button
+              onClick={() => setCurrentImg(idx)}
               key={idx}
-              className={
-                currentImg === idx
-                  ? "h-[1rem] w-[1rem] mr-[10px] rounded-full bg-white"
-                  : " h-[1rem] w-[1rem] mr-[10px] rounded-full bg-gray-400"
-              }
+              className={`slider-dot ${
+                currentImg === idx ? " bg-white" : "bg-gray-400"
+              }`}
             ></button>
           ))
         ) : (

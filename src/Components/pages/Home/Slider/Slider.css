@@ -1,0 +1,9 @@
+.slider-dot {
+  @apply h-[1rem] w-[1rem] rounded-full;
+}
+.banner-size {
+  @apply flex justify-center items-center h-[calc(100vh-64px)];
+}
+.sliding-button {
+  @apply text-4xl absolute bottom-0 bg-base-200 rounded-sm py-[.4rem] px-[.3rem];
+}
