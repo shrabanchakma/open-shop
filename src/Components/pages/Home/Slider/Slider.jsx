@@ -50,7 +50,7 @@ const Slider = ({ page, limit }) => {
     );
 
   return (
-    <>
+    <div className="relative bg-green-500">
       <div className="h-[calc(100vh-64px)] bg-yellow-500 flex justify-center  w-full relative">
         <button
           onClick={() => goLeft(currentImg)}
@@ -79,14 +79,23 @@ const Slider = ({ page, limit }) => {
           <FcNext />
         </button>
       </div>
-      {/* <span>
+      <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
         {images && images.length ? (
-          images.map((_, idx) => <button key={idx} className="h-15px w-15px"></button>)
+          images.map((_, idx) => (
+            <button
+              key={idx}
+              className={
+                currentImg === idx
+                  ? "h-[1rem] w-[1rem] mr-[10px] rounded-full bg-white"
+                  : " h-[1rem] w-[1rem] mr-[10px] rounded-full bg-gray-400"
+              }
+            ></button>
+          ))
         ) : (
           <div>no images available</div>
         )}
-      </span> */}
-    </>
+      </span>
+    </div>
   );
 };
 
